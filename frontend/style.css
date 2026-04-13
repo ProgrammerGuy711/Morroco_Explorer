@@ -1,9 +1,3 @@
-/* =====================================================
-   OFFLINE FONTS — replaces Google Fonts CDN import
-   Download the font files and place them in:
-   frontend/fonts/
-   ===================================================== */
-
 @font-face {
     font-family: 'Playfair Display';
     src: url('./fonts/PlayfairDisplay-Regular.ttf') format('truetype');

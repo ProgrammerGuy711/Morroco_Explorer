@@ -1,10 +1,8 @@
-/* ─── Base ─────────────────────────────────────────────────────────────── */
 .home-body {
     background: var(--dark);
     color: var(--white);
 }
 
-/* ─── Header ────────────────────────────────────────────────────────────── */
 .home-body header {
     background: rgba(26,18,8,0.92);
     backdrop-filter: blur(16px);
@@ -38,7 +36,6 @@
     background: var(--red);
 }
 
-/* ─── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
     min-height: calc(100vh - 72px);
     display: grid;
@@ -103,7 +100,6 @@
     margin-bottom: 32px;
 }
 
-/* ─── Unity Day Highlight ───────────────────────────────────────────────── */
 .hero-highlight {
     position: relative;
     font-size: 1rem;
@@ -122,7 +118,6 @@
     overflow: hidden;
 }
 
-/* Decorative left accent bar */
 .hero-highlight::before {
     content: '';
     position: absolute;
@@ -134,7 +129,6 @@
     border-radius: 3px 0 0 3px;
 }
 
-/* Subtle top-right star decoration */
 .hero-highlight::after {
     content: '✦';
     position: absolute;
@@ -161,14 +155,12 @@
     font-weight: 600;
 }
 
-/* ─── Hero CTAs ─────────────────────────────────────────────────────────── */
 .hero-ctas {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
 }
 
-/* ─── Buttons ───────────────────────────────────────────────────────────── */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -218,7 +210,6 @@
     transform: translateY(-2px);
 }
 
-/* ─── Hero Visual (flag orb) ────────────────────────────────────────────── */
 .hero-visual {
     position: relative;
     z-index: 1;
@@ -275,7 +266,6 @@
     50%       { transform: translateY(-12px); }
 }
 
-/* ─── Features ──────────────────────────────────────────────────────────── */
 .features {
     background: rgba(255,255,255,0.025);
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -350,7 +340,6 @@
     border: 1px solid rgba(212,160,23,0.2);
 }
 
-/* ─── Highlights ────────────────────────────────────────────────────────── */
 .highlights {
     padding: 80px 48px;
     position: relative;
@@ -455,7 +444,6 @@
     border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ─── Saharan Callout ───────────────────────────────────────────────────── */
 .saharan-callout {
     background: linear-gradient(135deg, rgba(193,39,45,0.12) 0%, rgba(212,160,23,0.08) 100%);
     border-top: 1px solid rgba(212,160,23,0.18);
@@ -525,7 +513,6 @@
     display: block;
 }
 
-/* ─── Footer ────────────────────────────────────────────────────────────── */
 .site-footer {
     padding: 40px 48px;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -577,7 +564,6 @@
 
 .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
-/* ─── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
     .highlights-grid {
         grid-template-columns: repeat(2, 1fr);

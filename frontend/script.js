@@ -5,11 +5,6 @@ const map = L.map('map', {
     attributionControl: true
 }).setView([29.0, -8.0], 5);
 
-// =====================================================
-// OFFLINE TILE LAYER
-// Tiles are served from your local folder: frontend/tiles/{z}/{x}/{y}.png
-// Downloaded using download_tiles.py (CartoDB source)
-// =====================================================
 L.tileLayer('./tiles/{z}/{x}/{y}.png', {
     attribution: '© CartoDB © OpenStreetMap contributors',
     maxZoom: 10,
