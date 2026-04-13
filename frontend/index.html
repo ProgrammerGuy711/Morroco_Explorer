@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Explorer — استكشف المغرب</title>
+
+    <link rel="stylesheet" href="leaflet/leaflet.css"/>
+    <link rel="icon" href="Flag_of_Morocco.svg.png">
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <img src="Flag_of_Morocco1.svg.png" alt="Morocco Flag" class="logo-flag">
+                <div class="logo-text">
+                    <span class="logo-title">Morocco Explorer</span>
+                    <span class="logo-sub">استكشف المغرب</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <nav class="header-nav">
+                    <a href="home.html" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link active">Map Explorer</a>
+                    <a href="quiz.html" class="nav-link">Quiz</a>
+                </nav>
+                <div class="header-controls">
+                    <input type="text" id="search-input" placeholder="Search cities..." oninput="searchCities(this.value)">
+                    <button class="filter-btn active" data-filter="all" onclick="filterCities('all')">All Cities</button>
+                    <button class="filter-btn" data-filter="saharan" onclick="filterCities('saharan')">Saharan Cities</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="map-section">
+            <div id="map"></div>
+            <div class="map-legend">
+                <span class="legend-dot saharan"></span> Saharan Region
+                <span class="legend-dot northern"></span> Northern Cities
+            </div>
+        </section>
+
+        <aside class="info-panel">
+
+            <div id="default-state">
+                <div class="compass">🧭</div>
+                <h2>Click any city<br>on the map</h2>
+                <p>Explore Morocco's cities — from the ancient medinas of the north to the sweeping Saharan south.</p>
+
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span id="total-count">—</span>
+                        <label>Cities</label>
+                    </div>
+                    <div class="stat-box">
+                        <span id="saharan-count">—</span>
+                        <label>Saharan</label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="city-detail" class="hidden">
+                <button class="back-btn" onclick="showDefaultState()">← Back</button>
+
+                <div class="city-badge" id="city-badge"></div>
+                <h2 id="city-name"></h2>
+                <p id="city-region" class="city-region"></p>
+
+                <div class="divider"></div>
+
+                <p id="city-description" class="city-desc"></p>
+
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-icon">👥</span>
+                        <span class="detail-label">Population</span>
+                        <span class="detail-value" id="city-population"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🏛️</span>
+                        <span class="detail-label">Founded</span>
+                        <span class="detail-value" id="city-founded"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🗣️</span>
+                        <span class="detail-label">Language</span>
+                        <span class="detail-value" id="city-language"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">💼</span>
+                        <span class="detail-label">Economy</span>
+                        <span class="detail-value" id="city-economy"></span>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+    </main>
+
+    <section class="city-list-section">
+        <h3>All Cities</h3>
+        <div id="city-cards"></div>
+    </section>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading cities from API...</p>
+    </div>
+
+    <script src="leaflet/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

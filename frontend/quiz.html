@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco Quiz — استكشف المغرب</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="home.css"/>
+    <link rel="stylesheet" href="quiz.css"/>
+    <link rel="icon" href="Flag_of_Morocco.svg.png">
+</head>
+<body class="home-body quiz-body">
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <img src="Flag_of_Morocco1.svg.png" class="logo-flag">
+                <div class="logo-text">
+                    <span class="logo-title">Morocco Explorer</span>
+                    <span class="logo-sub">استكشف المغرب</span>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Map Explorer</a>
+                <a href="quiz.html" class="nav-link active">Quiz</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="quiz-wrapper">
+
+        <div id="screen-start" class="quiz-screen active">
+            <div class="start-card">
+                <div class="start-icon">🧠</div>
+                <h1>Morocco Quiz</h1>
+                <p>Test your knowledge of Morocco's cities, history, culture, and geography. Questions are drawn live from the API.</p>
+
+                <div class="difficulty-row">
+                    <button class="diff-btn active" data-diff="easy" onclick="setDifficulty('easy')">Easy</button>
+                    <button class="diff-btn" data-diff="medium" onclick="setDifficulty('medium')">Medium</button>
+                    <button class="diff-btn" data-diff="hard" onclick="setDifficulty('hard')">Hard</button>
+                </div>
+
+                <div class="diff-desc" id="diff-desc">
+                    5 questions · Multiple choice · No time limit
+                </div>
+
+                <button class="btn btn-primary start-btn" onclick="startQuiz()">
+                    Start Quiz →
+                </button>
+
+                <div id="api-status" class="api-status"></div>
+            </div>
+        </div>
+
+        <div id="screen-question" class="quiz-screen">
+            <div class="quiz-top">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="quiz-meta">
+                    <span id="question-counter">Question 1 of 5</span>
+                    <span id="score-display">Score: 0</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-category" id="question-category"></div>
+                <h2 id="question-text"></h2>
+                <div class="options-grid" id="options-grid"></div>
+                <div class="feedback-box hidden" id="feedback-box">
+                    <div class="feedback-icon" id="feedback-icon"></div>
+                    <div class="feedback-content">
+                        <p class="feedback-verdict" id="feedback-verdict"></p>
+                        <p class="feedback-explain" id="feedback-explain"></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary next-btn hidden" id="next-btn" onclick="nextQuestion()">
+                    Next Question →
+                </button>
+            </div>
+        </div>
+
+        <div id="screen-results" class="quiz-screen">
+            <div class="results-card">
+                <div class="results-emoji" id="results-emoji"></div>
+                <h1 id="results-title"></h1>
+                <div class="results-score">
+                    <span id="results-fraction"></span>
+                    <label>correct answers</label>
+                </div>
+                <p id="results-message"></p>
+
+                <div class="results-breakdown" id="results-breakdown"></div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+                    <a href="index.html" class="btn btn-secondary">Explore the Map</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

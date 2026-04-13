@@ -1,0 +1,528 @@
+/* =====================================================
+   OFFLINE FONTS — replaces Google Fonts CDN import
+   Download the font files and place them in:
+   frontend/fonts/
+   ===================================================== */
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('./fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('./fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('./fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/DMSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/DMSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/DMSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --red:        #C1272D;
+    --red-dark:   #8B1A1F;
+    --red-light:  #e8474d;
+    --gold:       #D4A017;
+    --gold-light: #F5C842;
+    --sand:       #F5EDD8;
+    --sand-dark:  #E8D9B8;
+    --dark:       #1A1208;
+    --text:       #2C1F0A;
+    --text-light: #6B5B3E;
+    --white:      #FDFAF4;
+    --shadow:     0 4px 24px rgba(26,18,8,0.12);
+    --shadow-lg:  0 8px 40px rgba(26,18,8,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse at 10% 0%, rgba(193,39,45,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 100%, rgba(212,160,23,0.08) 0%, transparent 50%);
+}
+
+header {
+    background: var(--dark);
+    color: var(--white);
+    padding: 0 32px;
+    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-flag {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    font-weight: 300;
+}
+
+.header-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.7);
+    padding: 7px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    height: calc(100vh - 72px);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.map-section {
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background: #d4d8db;
+}
+
+.leaflet-popup-content-wrapper {
+    background: var(--dark);
+    color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    border: none;
+}
+
+.leaflet-popup-tip {
+    background: var(--dark);
+}
+
+.leaflet-popup-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    margin: 8px 14px;
+}
+
+.map-legend {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    z-index: 500;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.legend-dot.saharan { background: var(--gold); border: 2px solid var(--gold-dark, #b8860b); }
+.legend-dot.northern { background: var(--red); border: 2px solid var(--red-dark); }
+
+.info-panel {
+    background: var(--white);
+    border-left: 1px solid var(--sand-dark);
+    padding: 40px 32px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.hidden { display: none !important; }
+
+#default-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.compass {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#default-state h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+#default-state p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.9rem;
+    max-width: 280px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.stat-box {
+    flex: 1;
+    background: var(--sand);
+    border-radius: 12px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-box span {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--red);
+}
+
+.stat-box label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+#city-detail {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    padding: 0;
+    margin-bottom: 24px;
+    display: block;
+    transition: color 0.2s;
+}
+
+.back-btn:hover { color: var(--red); }
+
+.city-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    background: var(--sand);
+    color: var(--text-light);
+}
+
+.city-badge.saharan {
+    background: rgba(212,160,23,0.15);
+    color: #8B6914;
+}
+
+#city-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.city-region {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.divider {
+    height: 1px;
+    background: var(--sand-dark);
+    margin: 24px 0;
+}
+
+.city-desc {
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.detail-item {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-icon {
+    font-size: 1.2rem;
+}
+
+.detail-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+}
+
+.detail-value {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.city-list-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+.city-list-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--sand-dark);
+}
+
+#city-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.city-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1.5px solid transparent;
+    box-shadow: 0 2px 8px rgba(26,18,8,0.06);
+}
+
+.city-card:hover {
+    border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.city-card.saharan-card {
+    border-left: 3px solid var(--gold);
+}
+
+.city-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.city-card-region {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.city-card-pop {
+    font-size: 0.82rem;
+    color: var(--red);
+    font-weight: 500;
+}
+
+#loading {
+    position: fixed;
+    inset: 0;
+    background: var(--sand);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    gap: 16px;
+    transition: opacity 0.4s ease;
+}
+
+#loading p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--sand-dark);
+    border-top-color: var(--red);
+    border-radius: 50%;
+    animation: spin-fast 0.8s linear infinite;
+}
+
+@keyframes spin-fast {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    #map {
+        height: 50vw;
+        min-height: 300px;
+        background: #f2efe9;
+    }
+
+    .info-panel {
+        border-left: none;
+        border-top: 1px solid var(--sand-dark);
+        padding: 24px;
+    }
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.nav-link:hover { color: white; background: rgba(255,255,255,0.08); }
+.nav-link.active { color: white; background: var(--red); }
